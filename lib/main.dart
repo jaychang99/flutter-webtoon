@@ -58,8 +58,24 @@ class MyLargeTitle extends StatefulWidget {
 }
 
 class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override // 보통은 일반 변수로 상단에 정의해도 되나... parent 의 상태, API 응답을 상태로 쓰거나 할 때는 이렇게 사용.
+  void initState() {
+    // initState() 메서드는 항상 build 메서드보다 먼저 호출됩니다.
+    super.initState();
+    print("initState");
+  }
+
+  @override
+  void dispose() {
+    // dispose() 메서드는 위젯이 제거될 때 호출됩니다.
+    // 이 위젯이 widget tree 에서 제거되기 직전에 호출됩니다.
+    super.dispose();
+    print("dispose");
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("build");
     return Text(
       'My Large Title',
       style: TextStyle(
