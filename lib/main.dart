@@ -12,7 +12,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  int counter = 0; // will be overridden later.
+  List<int> numbers = [];
 
   void onClicked() {
     // refresh UI by calling setState
@@ -21,7 +21,7 @@ class _AppState extends State<App> {
     // however, for the sake of readability, it is called inside setState
     // counter = counter + 1; setState(() {}); is also valid
     setState(() {
-      counter = counter + 1;
+      numbers.add(numbers.length);
     });
   }
 
@@ -40,12 +40,13 @@ class _AppState extends State<App> {
                   fontSize: 30,
                 ),
               ),
-              Text(
-                '$counter',
-                style: const TextStyle(
-                  fontSize: 30,
+              for (var number in numbers)
+                Text(
+                  '$number',
+                  style: const TextStyle(
+                    fontSize: 30,
+                  ),
                 ),
-              ),
               IconButton(
                 iconSize: 40,
                 onPressed: onClicked,
