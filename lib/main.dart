@@ -15,7 +15,14 @@ class _AppState extends State<App> {
   int counter = 0; // will be overridden later.
 
   void onClicked() {
-    counter = counter + 1;
+    // refresh UI by calling setState
+    // it internally calls build method to update UI
+    // counter = counter + 1 does not have to be called inside setState
+    // however, for the sake of readability, it is called inside setState
+    // counter = counter + 1; setState(() {}); is also valid
+    setState(() {
+      counter = counter + 1;
+    });
   }
 
   @override
