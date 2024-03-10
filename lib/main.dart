@@ -27,8 +27,13 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
+    return MaterialApp(
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(color: Colors.red),
+        ),
+      ),
+      home: const Scaffold(
         backgroundColor: Color(0xFFF4EDDB),
         body: Center(
           child: Column(
@@ -50,10 +55,11 @@ class MyLargeTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
+    return Text(
       'My Large Title',
       style: TextStyle(
         fontSize: 30,
+        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
