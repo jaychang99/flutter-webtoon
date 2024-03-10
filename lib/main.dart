@@ -12,6 +12,8 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  bool isTitleOpen = false;
+
   List<int> numbers = [];
 
   void onClicked() {
@@ -25,6 +27,12 @@ class _AppState extends State<App> {
     });
   }
 
+  void toggleTitle() {
+    setState(() {
+      isTitleOpen = !isTitleOpen;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,13 +41,19 @@ class _AppState extends State<App> {
           titleLarge: TextStyle(color: Colors.red),
         ),
       ),
-      home: const Scaffold(
-        backgroundColor: Color(0xFFF4EDDB),
+      home: Scaffold(
+        backgroundColor: const Color(0xFFF4EDDB),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MyLargeTitle(),
+              isTitleOpen
+                  ? const MyLargeTitle()
+                  : const Text("No content to display"),
+              IconButton(
+                onPressed: toggleTitle,
+                icon: const Icon(Icons.remove_red_eye),
+              ),
             ],
           ),
         ),
