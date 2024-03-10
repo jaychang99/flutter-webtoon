@@ -12,15 +12,40 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  int counter = 0; // will be overridden later.
+
+  void onClicked() {
+    counter = counter + 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Hello flutter'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
+        backgroundColor: const Color(0xFFF4EDDB),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Click Count',
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+              Text(
+                '$counter',
+                style: const TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+              IconButton(
+                iconSize: 40,
+                onPressed: onClicked,
+                icon: const Icon(Icons.add_box_rounded),
+              )
+            ],
+          ),
         ),
       ),
     );
