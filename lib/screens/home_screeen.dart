@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,6 +10,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int totalSeconds = 25 * 60;
+  late Timer timer;
+
+  void onTick(Timer timer) {
+    setState(() {
+      totalSeconds--;
+    });
+  }
+
+  void onStartPressed() {
+    timer = Timer.periodic(const Duration(seconds: 1), onTick);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '25:00',
+                '${(totalSeconds / 60).floor().toString().padLeft(2, '0')}:${(totalSeconds % 60).toString().padLeft(2, '0')}',
                 style: TextStyle(
                   fontSize: 89,
                   fontWeight: FontWeight.w600,
@@ -35,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
                 icon: const Icon(Icons.play_circle_outline),
-                onPressed: () {},
+                onPressed: onStartPressed,
               ))),
           Flexible(
             flex: 1,
