@@ -15,27 +15,15 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Flexible(
             flex: 1,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.red,
-              ),
-            ),
+            child: Container(),
           ),
           Flexible(
             flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.green,
-              ),
-            ),
+            child: Container(),
           ),
           Flexible(
             flex: 1,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
+            child: Container(),
           )
         ],
       ),
