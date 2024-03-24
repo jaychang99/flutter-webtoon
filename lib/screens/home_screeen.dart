@@ -47,8 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
-    print(duration);
-    return '$seconds';
+    return duration.toString().split(".").first.substring(2, 7);
   }
 
   @override
