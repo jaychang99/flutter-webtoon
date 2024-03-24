@@ -50,6 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return duration.toString().split(".").first.substring(2, 7);
   }
 
+  void onResetPressed() {
+    setState(() {
+      totalSeconds = pomodoroTimeInSeconds;
+      totalPomodoros = 0;
+      isRunning = false;
+    });
+    timer.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Flexible(
-              flex: 2,
+              flex: 1,
               child: Center(
                   child: IconButton(
                 iconSize: 120,
@@ -81,6 +90,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     : Icons.play_circle_outline),
                 onPressed: isRunning ? onPausePressed : onStartPressed,
               ))),
+          Flexible(
+            flex: 1,
+            child: Center(
+              child: IconButton(
+                iconSize: 120,
+                color: Theme.of(context).cardColor,
+                icon: const Icon(Icons.reset_tv),
+                onPressed: onResetPressed,
+              ),
+            ),
+          ),
           Flexible(
             flex: 1,
             child: Row(
