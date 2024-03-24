@@ -45,6 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  String format(int seconds) {
+    var duration = Duration(seconds: seconds);
+    print(duration);
+    return '$seconds';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '${(totalSeconds / 60).floor().toString().padLeft(2, '0')}:${(totalSeconds % 60).toString().padLeft(2, '0')}',
+                format(totalSeconds),
                 style: TextStyle(
                   fontSize: 89,
                   fontWeight: FontWeight.w600,
